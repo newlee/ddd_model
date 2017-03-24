@@ -1,0 +1,38 @@
+digraph g {
+	node[style = filled, color = lightblue];
+
+	subgraph cluster0 {
+		object0->"Campaign Item"->{"Product";"Traffic";otherLimitation}[dir=none]
+		object0[label="Campaign Plan",shape=box,color=lightseagreen]
+		otherLimitation[label="..."]
+
+	}
+
+	subgraph cluster1 {
+		object1->{"Product Sales";"Traffic Result";otherResult}[dir=none]
+		object1[label="Campaign Result",shape=box,color=lightseagreen]
+		otherResult[label="..."]
+	}
+
+	subgraph cluster2 {
+		"Milestone Result"->"Prepared Event"[dir =none]
+		object3->{"Action Event";"Milestone Result";otherAction}[dir=none]
+		object3[label="Campaign Plan Actions",shape=box,color=lightseagreen]
+		otherAction[label="..."]
+		subgraph cluster5 {
+			
+			label="Support Domain"
+		}
+	}
+
+	subgraph cluster4 {
+		object4->{"AI";otherResult}[dir=none]
+		object4[label="Campaign Feedback",shape=box,color=lightseagreen]
+	}
+	object0 -> object3[color= red]
+	object3 -> object1[color= red]
+	object1 -> object4[label="Monitor";color= red]
+	object4 -> object0[label="Adjust" ;color= red]
+
+	
+}
